@@ -1,21 +1,24 @@
-﻿using UnityEngine;
+﻿/*
+ * File:			ItemController.cs
+ * Author:			Khandker Hussain
+ * Description: 	Code used from 2D assignemnt (derived from class and 2D Unity tutorial
+ * Date: 			11/22/2015
+ */
+using UnityEngine;
 using System.Collections;
 
 public class ItemController : MonoBehaviour 
 {
-	//PRIVATE INSTANCE VARIABLES
-	private int _score = 10;
-
-
-	// Use this for initialization
-	void Start () 
+	//PUBLIC INSTANCE VARIABLES
+	public int scoreValue = 10;
+	
+	//COLLISION METHODS
+	void OnTriggerEnter(Collider other)
 	{
-	
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-	
+		if(other.gameObject.CompareTag("Player"))
+		{
+			Destroy(gameObject); //destroys the item game object
+//			GameController.score += scoreValue; //adds score to scoreText
+		}
 	}
 }

@@ -2,13 +2,13 @@
  * File:			PlayerHealth.cs
  * Author:			Khandker Hussain
  * Description: 	Code used from assignment 1 (Originally learned from "Survival Shooter Tutorial")
- * Date: 			11/22/2015
+ * Date: 			11/23/2015
  */
 using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour 
+public class PlayerController : MonoBehaviour 
 {
 
 	//PUBLIC INSTANCE VARIABLES (ACCESSIBLE IN UNITY)
@@ -19,7 +19,15 @@ public class PlayerHealth : MonoBehaviour
 //	public AudioClip deathClip; //the audio clip to play when the player dies.
 	public float flashSpeed = 5f; //the speed the damageImage will fade at.
 	public Color flashColour = new Color(1f, 0f, 0f, 0.1f); // the colour the damageImage is set to, to flash. RED!
+
+	public int score; //NOTE: static = belongs to the class and not an instance of the class
 	
+	//PRIVATE INSTANCE VARIABLE
+	Text _scoreText; //INSERT: PRIVATE?
+	private int _count;
+	private AudioSource[] _audioSources; //array of audio sources
+	private AudioSource _potionSound; //pickup coin sound
+
 	//PRIVATE INSTANCE VARIABLES REFERENCES
 	private Animator _anim; //reference to the Animator component.
 	private AudioSource _playerAudio; //reference to the AudioSource component.
@@ -35,11 +43,18 @@ public class PlayerHealth : MonoBehaviour
 
 		// Set the starting health of the player.
 		currentHealth = startingHealth;
+
+		//Score stuff and score set to 0
+		_scoreText = GetComponent <Text> (); //component reference
+		score = 0; //resets score to 0
 	}
 	
 	
 	void Update ()
 	{
+		//Creating score text with concatenation
+		_scoreText.text = "Score: " + score; //basic concatenation for the text variable to set the string and it's int value
+
 		// If the player has just been damaged
 		if(_damaged)
 		{
@@ -58,7 +73,7 @@ public class PlayerHealth : MonoBehaviour
 		// Resets the damaged flag
 		_damaged = false;
 	}
-	
+
 	//PUBLIC METHODS
 	//this method is called by other scripts in Unity. (must be public, or won't work)
 	public void TakeDamage (int amount)

@@ -1,8 +1,8 @@
-﻿/*
+/*
  * File:			EnemyMovement.cs
  * Author:			Khandker Hussain
  * Description: 	Code used from first assignment (Originally "Survival Shooter Tutorial")
- * Date: 			11/22/2015
+ * Date: 			11/23/2015
  */
 using UnityEngine;
 using System.Collections;
@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
 {
 	//PRIVATE INSTANCE VARIABLES
 	private Transform _player; // Reference to the player's position.
-	private PlayerHealth _playerHealth; // Reference to the player's health.
+	private PlayerController _playerHealth; // Reference to the player's health.
 	private NavMeshAgent _nav;// Reference to the nav mesh agent.
 	//	public float speed;
 	
@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
 	{
 		// Set up the references.
 		_player = GameObject.FindGameObjectWithTag ("Player").transform;
-		_playerHealth = _player.GetComponent <PlayerHealth> ();
+		_playerHealth = _player.GetComponent <PlayerController> ();
 		_nav = GetComponent <NavMeshAgent> (); //refers to nav mesh component
 	}
 	

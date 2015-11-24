@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -28,6 +29,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         [SerializeField] private AudioClip m_JumpSound;           // the sound played when character leaves the ground.
         [SerializeField] private AudioClip m_LandSound;           // the sound played when character touches back on ground.
 
+		private Text _gameOverText;
         private Camera m_Camera;
         private bool m_Jump;
         private float m_YRotation;
@@ -236,7 +238,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             m_MouseLook.LookRotation (transform, m_Camera.transform);
         }
-
 
         private void OnControllerColliderHit(ControllerColliderHit hit)
         {

@@ -1,8 +1,8 @@
-﻿/*
+/*
  * File:			EnemyAttack.cs
  * Author:			Khandker Hussain
  * Description: 	Code used from first assignment (Originally "Survival Shooter Tutorial")
- * Date: 			11/22/2015
+ * Date: 			11/23/2015
  */
 using UnityEngine;
 using System.Collections;
@@ -17,7 +17,7 @@ public class EnemyAttack : MonoBehaviour
 	//(REFERENCES)
 //	private Animator _anim;
 	private GameObject _player;
-	private PlayerHealth _playerHealth;
+	private PlayerController _playerHealth;
 	private bool _playerInRange;
 	private float _timer;
 	
@@ -25,7 +25,7 @@ public class EnemyAttack : MonoBehaviour
 	void Awake ()
 	{
 		_player = GameObject.FindGameObjectWithTag ("Player"); 
-		_playerHealth = _player.GetComponent <PlayerHealth> ();//script reference
+		_playerHealth = _player.GetComponent <PlayerController> ();//script reference
 //		_anim = GetComponent <Animator> ();
 	}
 	

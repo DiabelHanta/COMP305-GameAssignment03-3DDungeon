@@ -18,6 +18,10 @@ public class PlayerScore : MonoBehaviour
 //	public Text winText;
 
 	//PRIVATE INSTANCE VARIABLES
+	//PRIVATE INSTANCE VARIABLES
+	private AudioSource[] _audioSources; //array of audio sources
+	private AudioSource _pickupSound; //pickup coin sound
+	private AudioSource _damageSound;
 	private Rigidbody _rb;
 	//score
 	private int _score;
@@ -31,7 +35,8 @@ public class PlayerScore : MonoBehaviour
 		ScoreText ();
 //		winText.text = "";
 	}
-	
+
+	//COLLISION METHODS
 	//Method is activated once the player object (my "sphere" primitive) "touches" another object's collider
 	void OnTriggerEnter(Collider other) 
 	{
@@ -43,6 +48,16 @@ public class PlayerScore : MonoBehaviour
 //			other.gameObject.SetActive(false);
 			_score += 10; //or use: count += 1;
 			ScoreText();
+		}
+	}
+
+	//audio music
+	void OnCollisionEnter(Collision other)
+	{
+		//player hits coin then play "_elfSound"
+		if(other.gameObject.CompareTag("Enemy"))
+		{
+			this._pickupSound.Play ();
 		}
 	}
 	

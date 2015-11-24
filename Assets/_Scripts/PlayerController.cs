@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
 	
 	//PRIVATE INSTANCE VARIABLE
 	Text _scoreText; //INSERT: PRIVATE?
-	private int _count;
+	private int _score;
 	private AudioSource[] _audioSources; //array of audio sources
 	private AudioSource _potionSound; //pickup coin sound
 
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
 		currentHealth -= amount;
 		
 		healthSlider.value = currentHealth;// Set the health bar's value to the current health.
-		
+
 		_playerAudio.Play ();// Play the hurt sound effect.
 		
 //		// straightforward...health equls or below to 0 and !isDead = call Death()
